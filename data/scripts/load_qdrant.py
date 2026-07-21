@@ -15,6 +15,7 @@ Usage:
 from __future__ import annotations
 
 import json
+import os
 import uuid
 from pathlib import Path
 
@@ -28,7 +29,9 @@ CASES_FILE = PROCESSED / "cases_clean.jsonl"
 
 COLLECTION = "cases_v1"
 BATCH = 512
-QDRANT_URL = "http://localhost:6333"
+# Point at Qdrant Cloud by exporting QDRANT_URL and QDRANT_API_KEY.
+QDRANT_URL = os.environ.get("QDRANT_URL", "http://localhost:6333")
+QDRANT_API_KEY = os.environ.get("QDRANT_API_KEY", "")
 
 # Deterministic point IDs: same case_id always maps to the same UUID (idempotent upserts)
 NAMESPACE = uuid.UUID("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
@@ -57,7 +60,7 @@ def main() -> None:
     assert len(df) == manifest["num_cases"], "parquet/manifest count mismatch"
 
     snippets = load_snippets()
-    client = QdrantClient(url=QDRANT_URL, timeout=120)
+    client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY or None, timeout=120)
 
     # ---------------------------------------------------------------- collection
     if client.collection_exists(COLLECTION):

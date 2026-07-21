@@ -22,6 +22,7 @@ class Settings(BaseSettings):
 
     # --- qdrant
     qdrant_url: str = "http://localhost:6333"
+    qdrant_api_key: str = ""  # set for Qdrant Cloud; empty for local/docker
     qdrant_collection: str = "cases_v1"
     embedding_version: str = "bgem3-v1"
 
