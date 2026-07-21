@@ -1,0 +1,141 @@
+@import "tailwindcss";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+
+@theme {
+  /* clinical paper palette */
+  --color-paper: #f7f8f7;
+  --color-chart: #ffffff;
+  --color-ink: #1a2e35;
+  --color-ink-soft: #47605f;
+  --color-ink-faint: #7d908f;
+  --color-line: #dde4e2;
+  --color-line-soft: #eaefed;
+  --color-teal: #0f766e;
+  --color-teal-deep: #0b5d57;
+  --color-teal-wash: #e6f2f0;
+  --color-conf-high: #15803d;
+  --color-conf-high-wash: #e9f5ee;
+  --color-conf-mod: #b45309;
+  --color-conf-mod-wash: #fdf3e3;
+  --color-conf-weak: #b91c1c;
+  --color-conf-weak-wash: #fdecec;
+
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-teal-wash);
+  color: var(--color-teal-deep);
+}
+
+/* visible keyboard focus, quality floor */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* similarity trace — the signature element */
+@keyframes trace-draw {
+  from {
+    stroke-dashoffset: 260;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.trace-path {
+  stroke-dasharray: 260;
+  animation: trace-draw 0.9s ease-out forwards;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card-in {
+  animation: card-in 0.35s ease-out both;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+.pulse-soft {
+  animation: pulse-soft 1.4s ease-in-out infinite;
+}
+
+/* ambient ECG sweep on the empty state — slow, quiet, alive */
+@keyframes ecg-sweep {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -720;
+  }
+}
+.ecg-ambient {
+  stroke-dasharray: 130 590;
+  animation: ecg-sweep 7s linear infinite;
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.bar-grow {
+  transform-origin: left;
+  animation: bar-grow 0.5s ease-out both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.25s ease-out both;
+}

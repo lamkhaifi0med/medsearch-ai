@@ -1,0 +1,20 @@
+[project]
+name = "medsearch-backend"
+version = "0.1.0"
+description = "MedSearch AI — clinical case retrieval backend"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.111",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "qdrant-client>=1.9",
+    "openai>=1.30",
+    "redis>=5.0",
+    "FlagEmbedding>=1.2",
+    "python-dotenv>=1.0",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

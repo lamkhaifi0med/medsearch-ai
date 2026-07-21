@@ -1,0 +1,24 @@
+{
+  "input": "augmented_notes_30K.jsonl",
+  "output": "cases_clean.jsonl",
+  "stats": {
+    "read": 30000,
+    "written": 24348,
+    "duplicates_dropped": 5652
+  },
+  "summary_status": {
+    "ok": 17977,
+    "repaired": 6371
+  },
+  "sex_distribution": {
+    "female": 11509,
+    "male": 12638,
+    "unknown": 201
+  },
+  "outcome_distribution": {
+    "unknown": 10379,
+    "deteriorated": 4078,
+    "improved": 8195,
+    "deceased": 1696
+  }
+}

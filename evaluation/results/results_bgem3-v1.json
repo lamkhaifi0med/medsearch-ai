@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-07-18 00:19 UTC",
+  "collection": "cases_v1",
+  "points_indexed": 24348,
+  "embedding_version": "bgem3-v1",
+  "n_queries": 99,
+  "k": 10,
+  "modes": {
+    "dense": {
+      "metrics": {
+        "recall@1": 0.303,
+        "recall@5": 0.5253,
+        "recall@10": 0.6162,
+        "mrr@10": 0.3868,
+        "ndcg@10": 0.4411
+      },
+      "mean_latency_ms": 116.2
+    },
+    "sparse": {
+      "metrics": {
+        "recall@1": 0.4343,
+        "recall@5": 0.6465,
+        "recall@10": 0.7273,
+        "mrr@10": 0.521,
+        "ndcg@10": 0.5702
+      },
+      "mean_latency_ms": 25.1
+    },
+    "hybrid": {
+      "metrics": {
+        "recall@1": 0.4545,
+        "recall@5": 0.6566,
+        "recall@10": 0.8485,
+        "mrr@10": 0.5559,
+        "ndcg@10": 0.6237
+      },
+      "mean_latency_ms": 32.3
+    },
+    "hybrid100": {
+      "metrics": {
+        "recall@1": 0.4545,
+        "recall@5": 0.6768,
+        "recall@10": 0.8485,
+        "mrr@10": 0.5567,
+        "ndcg@10": 0.6245
+      },
+      "mean_latency_ms": 25.4
+    },
+    "weighted": {
+      "metrics": {
+        "recall@1": 0.4848,
+        "recall@5": 0.7576,
+        "recall@10": 0.8586,
+        "mrr@10": 0.5956,
+        "ndcg@10": 0.6582
+      },
+      "mean_latency_ms": 141.4
+    },
+    "rerank": {
+      "metrics": {
+        "recall@1": 0.7677,
+        "recall@5": 0.9091,
+        "recall@10": 0.9293,
+        "mrr@10": 0.8329,
+        "ndcg@10": 0.857
+      },
+      "mean_latency_ms": null,
+      "blend_beta": 0.9,
+      "rerank_depth": 50,
+      "candidates": 100
+    }
+  },
+  "best_alpha": 0.4
+}

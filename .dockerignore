@@ -1,0 +1,12 @@
+# Keep the build context small — data and caches never go into images
+
+data/
+!data/processed/.gitkeep
+frontend/node_modules/
+frontend/dist/
+**/**pycache**/
+**/_.pyc
+.git/
+.env
+_.md
+docs/
