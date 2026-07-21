@@ -9,12 +9,10 @@ from __future__ import annotations
 import logging
 import threading
 from contextlib import asynccontextmanager
-from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from fastapi.staticfiles import StaticFiles
 
 from app.api.v1.routes import router as v1_router
 from app.core.config import settings
@@ -76,13 +74,6 @@ def create_app() -> FastAPI:
         )
 
     app.include_router(v1_router)
-
-    # Single-container deployments (e.g. Hugging Face Spaces): serve the built
-    # frontend from the API process when a static dir is present.
-    static_dir = Path(__file__).resolve().parents[1] / "static"
-    if static_dir.is_dir():
-        app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
-
     return app
 
 

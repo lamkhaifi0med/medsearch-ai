@@ -19,11 +19,7 @@ logger = logging.getLogger(__name__)
 
 class RetrievalService:
     def __init__(self) -> None:
-        self._client = QdrantClient(
-            url=settings.qdrant_url,
-            api_key=settings.qdrant_api_key or None,
-            timeout=60,
-        )
+        self._client = QdrantClient(url=settings.qdrant_url, timeout=60)
         self._model = None
 
     def load_model(self) -> None:
